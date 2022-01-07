@@ -71,6 +71,9 @@ public class Window {
         glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
         glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
 
+        // set up key event callbacks
+        glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
+
         // Make OpenGL context current
         glfwMakeContextCurrent(glfwWindow);
 
@@ -93,7 +96,7 @@ public class Window {
             // Poll events
             glfwPollEvents();
 
-            glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+            glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
 
             glfwSwapBuffers(glfwWindow);
